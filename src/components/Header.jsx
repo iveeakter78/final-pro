@@ -12,11 +12,11 @@ const Header = () => {
      <section className={` bg-white lg:py-2 ${show ? "mb-0" : "mb-6"} w-full`}>
         <Container>
           <Flex className={`lg:flex items-center`}>
-            <div className='lg:w-4/8 w-full'>
+            <div className='lg:w-2/8 w-full'>
               <img src={imges} alt="" />
             </div>
-            <div className='lg:w-4/8 w-full'>
-            <ul className={`lg:flex justify-center text-center lg:text-start gap-x-3 lg:mt-0 mt-2 py-2 lg:py-0
+            <div className='lg:w-6/8 w-full'>
+            <ul className={`lg:flex flex-wrap justify-center lg:me-[35%] me-0 text-center gap-x-3 lg:mt-0 mt-2 py-2 lg:py-0
                duration-300 ease-in-out ${show == true ? "bg-green-300 mt-3 " : " mt-[-160px]"}`}>
                 <li><a className='font-dm font-normal text-[14px] text-[#767676] hover:text-[#262626] duration-300 ease-in-out' href="#">Home</a></li>
                   <li><a className='font-dm font-normal text-[14px] text-[#767676] hover:text-[#262626] duration-300 ease-in-out' href="#">Shop</a></li>
