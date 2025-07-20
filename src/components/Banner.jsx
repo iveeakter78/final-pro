@@ -7,7 +7,9 @@ const Banner = () => {
     dots:true,
     infinite: true,
     arrows: false,
-    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    speed: 2500,
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: dots => (
@@ -37,7 +39,7 @@ const Banner = () => {
   };
   return (
     <>
-   <section className=''>
+   <section id='banner' className=''>
      <Slider {...settings}>
          <div>
         <img src={banimg} alt="" />
