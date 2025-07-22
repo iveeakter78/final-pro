@@ -6,6 +6,8 @@ import Banner from '../components/Banner'
 import Free from '../components/Free'
 import Add from '../components/Add'
 import Arrive from '../components/Arrive'
+import Special from '../components/Special'
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (
@@ -16,6 +18,8 @@ const Home = () => {
       <Free />
       <Add />
       <Arrive />
+      <Special />
+      <Footer />
     </div>
   )
 }

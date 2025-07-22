@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Container from './Container'
 import item from "../assets/it-1.png"
+import climg from "../assets/cl.png"
 import { FaArrowLeft, FaHeart, FaLongArrowAltLeft, FaLongArrowAltRight, FaShoppingCart } from 'react-icons/fa'
 import { CiRedo } from 'react-icons/ci'
 import { IoGitCompare } from 'react-icons/io5'
@@ -39,13 +40,43 @@ const Arrive = () => {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+     responsive: [
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      }
+    ]
     };
   return (
     <>
     <section className='pt-[128px]'>
         <Container>
-            <h3 className='text-[#262626] font-dm font-bold text-[39px]'>New Arrivals</h3>
-            <div id='arrive' className='mt-[48px]'>
+            <h3 className='text-[#262626] font-dm font-bold text-[39px] ms-[10px] lg:ms-0'>New Arrivals</h3>
+            <div id='arrive' className='mt-[48px] mx-2 lg:mx-0'>
               <Slider {...newarrival}>
                     {data.map((item) =>(
                        <div className='!w-[95%]'>
@@ -91,6 +122,11 @@ const Arrive = () => {
                 </div>
                     ))}
               </Slider>
+            </div>
+            <div className='mt-[130px] mx-2 lg:mx-0'>
+              <div className='w-full'>
+                <img className='w-full' src={climg} alt="" />
+              </div>
             </div>
         </Container>
     </section>
