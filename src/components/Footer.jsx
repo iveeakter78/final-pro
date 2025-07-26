@@ -3,6 +3,7 @@ import Container from './Container'
 import fimg from "../assets/logo.png"
 import { FaFacebookF } from 'react-icons/fa'
 import { FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <>
@@ -12,11 +13,13 @@ const Footer = () => {
               <div className='lg:w-2/12 md:w-1/2 w-full text-center lg:text-start md:text-start md:px-4 lg:px-0'>
                <h3 className='text-[#262626] font-dm font-bold text-16px mt-[17px]'>MENU</h3>
                <ul>
-                <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Home</p></li>
-                <li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Shop</p></li>
-                <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>About</p></li>
-                <li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Contact</p></li>
-                <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Journal</p></li>
+                <Link to="/"><li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Home</p></li></Link>
+                <Link to="/shop"><li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Shop</p></li></Link>
+                 <Link to={"/about"}><li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>About</p></li></Link>
+                <Link to={"/contact"}><li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Contact</p></li></Link>
+                <Link to={"/journal"}><li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Journal</p></li></Link>
+                
+                
                </ul>
               </div>
               <div className='lg:w-2/12 md:w-1/2 w-full text-center lg:text-start md:text-start py-3 lg:py-0 md:py-0'>

@@ -1,11 +1,30 @@
+import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from "react-router-dom"
 import Container from "./components/Container"
 import Home from "./pages/Home"
+import Layout from "./components/Layout"
+import About from "./pages/About"
+import Error from "./Error"
+import Shop from "./pages/Shop"
+import Journal from "./pages/Journal"
+import Contact from "./pages/Contact"
 
 function App() {
-
+   let router = createBrowserRouter(createRoutesFromChildren(
+   <Route>
+    <Route element={<Layout />}>
+    <Route path="/" element={<Home />}></Route>
+    <Route path="/about" element={<About />}></Route>
+    <Route path="/shop" element={<Shop />}></Route>
+    <Route path="/journal" element={<Journal />}></Route>
+    <Route path="/contact" element={<Contact />}></Route>
+   </Route>
+     <Route path="*" element={<Error />}></Route>
+   </Route>
+   ))
   return (
     <>
-     <Home />
+    <RouterProvider router={router}></RouterProvider>
+    
     </>
   )
 }
