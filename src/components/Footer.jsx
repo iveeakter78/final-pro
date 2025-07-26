@@ -1,50 +1,66 @@
 import React from 'react'
 import Container from './Container'
 import fimg from "../assets/logo.png"
+import { FaFacebookF } from 'react-icons/fa'
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 const Footer = () => {
   return (
     <>
     <section className='mt-[106px] bg-[#F5F5F3] py-[50px]'>
         <Container>
-            <div className='w-full flex flex-wrap justify-between items-center'>
-              <div className='w-2/12'>
-               <h3>MENU</h3>
+            <div className='w-full lg:flex md:flex flex-wrap justify-between items-center'>
+              <div className='lg:w-2/12 md:w-1/2 w-full text-center lg:text-start md:text-start md:px-4 lg:px-0'>
+               <h3 className='text-[#262626] font-dm font-bold text-16px mt-[17px]'>MENU</h3>
                <ul>
-                <li><p>Home</p></li>
-                <li><p>Shop</p></li>
-                <li><p>About</p></li>
-                <li><p>Contact</p></li>
-                <li><p>Journal</p></li>
+                <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Home</p></li>
+                <li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Shop</p></li>
+                <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>About</p></li>
+                <li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Contact</p></li>
+                <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Journal</p></li>
                </ul>
               </div>
-              <div className='w-2/12'>
-              <h3>SHOP</h3>
+              <div className='lg:w-2/12 md:w-1/2 w-full text-center lg:text-start md:text-start py-3 lg:py-0 md:py-0'>
+              <h3 className='text-[#262626] font-dm font-bold text-16px mt-[17px]'>SHOP</h3>
                 <ul>
-                    <li><p>Category 1</p></li>
-                    <li><p>Category 2</p></li>
-                    <li><p>Category 3</p></li>
-                    <li><p>Category 4</p></li>
-                    <li><p>Category 5</p></li>
+                    <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Category 1</p></li>
+                    <li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Category 2</p></li>
+                    <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Category 3</p></li>
+                    <li className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'><p>Category 4</p></li>
+                    <li className='text-[#6D6D6D] font-dm font-normal text-[14px]'><p>Category 5</p></li>
                 </ul>
               </div>
-              <div className='w-3/12'>
-              <h3>HELP</h3>
+              <div className='lg:w-3/12 md:w-1/2 w-full text-center lg:text-start md:text-start md:px-4 lg:px-0 md:py-3 lg:py-0 py-0'>
+              <h3 className='text-[#262626] font-dm font-bold text-16px mt-[17px]'>HELP</h3>
               <div>
-                <p>Privacy Policy</p>
-                <p>Terms & Conditions</p>
-                <p>Special E-shop</p>
-                <p>Shipping</p>
-                <p>Secure Payments</p>
+                <p className='text-[#6D6D6D] font-dm font-normal text-[14px]'>Privacy Policy</p>
+                <p className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'>Terms & Conditions</p>
+                <p className='text-[#6D6D6D] font-dm font-normal text-[14px]'>Special E-shop</p>
+                <p className='text-[#6D6D6D] font-dm font-normal text-[14px] py-1'>Shipping</p>
+                <p className='text-[#6D6D6D] font-dm font-normal text-[14px]'>Secure Payments</p>
               </div>
               </div>
-              <div className='w-3/12'>
-              <h3>(052) 611-5711</h3>
-              <h5>company@domain.com</h5>
+              <div className='lg:w-3/12 md:w-1/2 w-full lg:mb-[100px] text-center lg:text-start md:text-start py-3 lg:py-0 md:py-0'>
+              <h3 className='text-[#262626] font-dm font-bold text-16px mt-[17px]'>(052) 611-5711</h3>
+              <h5 className='text-[#6D6D6D] font-dm font-normal text-[14px]'>company@domain.com</h5>
               </div>
-              <div className='w-2/12'>
-              <div>
+              <div className='lg:w-2/12 md:w-1/2 w-full lg:mb-[100px] mt-[30px] lg:mt-0'>
+              <div className='ms-[45%] lg:ms-[35%] md:ms-[20px]'>
                 <img src={fimg} alt="" />
               </div>
+              </div>
+            </div>
+            <div className='w-full lg:flex md:flex justify-between mt-[65px]'>
+              <div className='lg:w-1/3 md:w-1/3 w-full'>
+                <div className='flex items-center justify-center lg:justify-start md:justify-start md:px-4 lg:px-0 '>
+                   <FaFacebookF />
+                <div className='mx-[10px]'>
+                   <FaLinkedinIn />
+                </div>
+                 <FaInstagram />
+                </div>
+              </div>
+              <div className='lg:w-2/3 md:w-2/3 w-full text-center lg:ms-[42%] lg:text-start md:text-start py-4 lg:py-0 md:py-0'>
+                <p className='text-[#6D6D6D] font-dm font-normal text-[14px]'>2020 Orebi Minimal eCommerce Figma Template by Adveits</p>
               </div>
             </div>
         </Container>
