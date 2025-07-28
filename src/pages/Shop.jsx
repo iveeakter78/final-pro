@@ -5,10 +5,15 @@ import { FaHeart, FaPlus } from 'react-icons/fa6'
 import spimg from "../assets/cap.png"
 import { IoGitCompare } from 'react-icons/io5'
 import { FaShoppingCart } from 'react-icons/fa'
+import { TiArrowSortedDown } from 'react-icons/ti'
 
 const Shop = () => {
   let [catshow, setCatShow] = useState(false)
+  let [colourshow, setColourShow] = useState(false)
+  let [brandshow, setBrandShow] = useState(false)
   let catRef = useRef()
+  let colorRef = useRef()
+  let brandRef = useRef()
    useEffect(() =>{
      document.addEventListener("click",(e) =>{
         //  console.log(e.target);
@@ -18,9 +23,19 @@ const Shop = () => {
          }else{
             setCatShow(catshow)
          }
+         if(colorRef.current.contains(e.target) == true){
+             setColourShow(!colourshow)
+         }else{
+            setColourShow(colourshow)
+         }
+         if(brandRef.current.contains(e.target) == true){
+           setBrandShow(!brandshow)
+         }else{
+           setBrandShow(brandshow)
+         }
      })
     
-   },[catshow])
+   },[catshow ,colourshow ,brandshow])
   return (
     <>
     <section>
@@ -65,8 +80,14 @@ const Shop = () => {
                       </span></li>
                   </ul>
                  }
-                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case py-8'>Shop by Color
-                    <ul className='mt-[35px]'>
+                 <div className='flex justify-between items-center' ref={colorRef}>
+                    <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case py-8'>Shop by Color</h4>
+                    <div>
+                      <TiArrowSortedDown />
+                    </div>
+                 </div>
+                 {colourshow &&
+                     <ul className='mt-[15px]'>
                     <li className='border-b-2 border-b-[#F0F0F0] py-2'>
                       <span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Colour 1</p>
@@ -84,9 +105,15 @@ const Shop = () => {
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Colour 5</p>
                       </span></li>
                   </ul>
-                  </h4>
-                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case'>Shop by Brand</h4>
-                     <ul className='mt-[35px]'>
+                 }
+                 <div className='flex justify-between' ref={brandRef}>
+                   <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case'>Shop by Brand</h4>
+                   <div>
+                    <TiArrowSortedDown />
+                   </div>
+                 </div>
+                 {brandshow &&
+                       <ul className='mt-[35px]'>
                     <li className='border-b-2 border-b-[#F0F0F0] py-2'>
                       <span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 1</p>
@@ -104,6 +131,8 @@ const Shop = () => {
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 5</p>
                       </span></li>
                   </ul>
+                 }
+                    
                   <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case pt-8'>Shop by Price</h4>
                      <ul className='mt-[35px]'>
                     <li className='border-b-2 border-b-[#F0F0F0] py-2'>
