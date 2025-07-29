@@ -51,7 +51,7 @@ const Navbar = () => {
                     <h5 className='text-[#262626] font-dm font-normal text-[14px]'>Shop by Category</h5>
                 </div>
                  {cateshow &&
-                           <div className='bg-[#262626] py-2 absolute z-10 top-[42px] left-0 w-full'>
+                           <div className='bg-[#262626] py-2 absolute z-10 top-[42px] left-0 lg:w-full w-[260px]'>
                      <ul>
                   <li className='text-[rgba(255,255,255,0.7)] relative group
                      ps-[20px] font-dm font-normal py-3 border-b-1 border-[#979797] text-[14px] hover:text-[#fff] hover:ps-[30px] duration-300 ease-in-out'>
@@ -106,7 +106,7 @@ const Navbar = () => {
                             <IoMdArrowDropdown />
                         </div>
                         {accshow &&
-                          <div className='absolute z-10 top-[40px] left-[20%] w-[200px]'>
+                          <div className='absolute z-10 top-[40px] lg:left-[20%] right-[30px] lg:w-[200px] w-[150px]'>
                             <ul>
                                 <li className='font-dm text-[#FFFFFF] font-bold 
                                 text-[14px] bg-[#2B2B2B]
@@ -122,7 +122,7 @@ const Navbar = () => {
                         </div>
                 </div>
                 {cartshow &&
-                     <div className='bg-[#FFFFFF] absolute z-10 top-[40px] left-0 w-full'>
+                     <div className='bg-[#FFFFFF] absolute z-10 top-[40px] lg:left-0 right-[0px] lg:w-full w-[250px]'>
                        <div className='bg-[#F5F5F3] flex flex-wrap justify-between px-2'>
                           <div>
                             <img src={image} alt="" />
