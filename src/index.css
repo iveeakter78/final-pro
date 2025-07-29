@@ -33,3 +33,9 @@
     right: 20px;
     transform: translateY(-50%);
 }
+@media(min-width: 380px) and (max-width:575px){
+    .one{
+        padding: 0px;
+        width: 12px;
+    }
+}

@@ -10,7 +10,7 @@ const Header = () => {
   let [show,setShow] = useState(false)
   return (
    <>
-     <section className={` bg-white lg:py-2 lg:mb-0 ${show ? "mb-0" : "mb-6"} w-full`}>
+     <section className={` bg-white lg:py-2 lg:mb-0 ${show ? "mb-0" : "mb-6"} w-full fixed z-20`}>
         <Container>
           <Flex className={`lg:flex items-center`}>
             <div className='lg:w-2/8 w-full'>
