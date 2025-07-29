@@ -7,6 +7,7 @@ import Error from "./Error"
 import Shop from "./pages/Shop"
 import Journal from "./pages/Journal"
 import Contact from "./pages/Contact"
+import ProductDetail from "./pages/ProductDetail"
 
 function App() {
    let router = createBrowserRouter(createRoutesFromChildren(
@@ -15,6 +16,7 @@ function App() {
     <Route path="/" element={<Home />}></Route>
     <Route path="/about" element={<About />}></Route>
     <Route path="/shop" element={<Shop />}></Route>
+    <Route path="/shop/:id" element={<ProductDetail />}></Route>
     <Route path="/journal" element={<Journal />}></Route>
     <Route path="/contact" element={<Contact />}></Route>
    </Route>
