@@ -6,14 +6,19 @@ import spimg from "../assets/cap.png"
 import { IoGitCompare } from 'react-icons/io5'
 import { FaShoppingCart } from 'react-icons/fa'
 import { TiArrowSortedDown } from 'react-icons/ti'
+import { MdWindow } from 'react-icons/md'
+import { AiOutlineBars } from 'react-icons/ai'
+import { IoMdArrowDropdown } from 'react-icons/io'
 
 const Shop = () => {
   let [catshow, setCatShow] = useState(false)
   let [colourshow, setColourShow] = useState(false)
   let [brandshow, setBrandShow] = useState(false)
+  let [shopshow, setShopShow] = useState(false)
   let catRef = useRef()
   let colorRef = useRef()
   let brandRef = useRef()
+  let shopRef = useRef()
    useEffect(() =>{
      document.addEventListener("click",(e) =>{
         //  console.log(e.target);
@@ -32,6 +37,11 @@ const Shop = () => {
            setBrandShow(!brandshow)
          }else{
            setBrandShow(brandshow)
+         }
+         if(shopRef.current.contains(e.target) == true){
+              setShopShow(!shopshow)
+         }else{
+             setShopShow(shopshow)
          }
      })
     
@@ -87,7 +97,7 @@ const Shop = () => {
                     </div>
                  </div>
                  {colourshow &&
-                     <ul className='mt-[15px]'>
+                     <ul className='mt-[15px] mb-[25px]'>
                     <li className='border-b-2 border-b-[#F0F0F0] py-2'>
                       <span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Colour 1</p>
@@ -132,9 +142,14 @@ const Shop = () => {
                       </span></li>
                   </ul>
                  }
-                    
-                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case pt-8'>Shop by Price</h4>
-                     <ul className='mt-[35px]'>
+                <div className='flex justify-between items-center pt-8' ref={shopRef}> 
+                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case'>Shop by Price</h4>
+                   <div>
+                     <TiArrowSortedDown />
+                   </div>
+                  </div>  
+                  { shopshow &&
+                           <ul className='mt-[35px]'>
                     <li className='border-b-2 border-b-[#F0F0F0] py-2'>
                       <span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'> $0.00 - $9.99</p>
@@ -152,135 +167,43 @@ const Shop = () => {
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>$40.00 - $69.99</p>
                       </span></li>
                   </ul>
+                     }
+                   
                 </div>
                 <div className='w-[69%]'>
+                  <div className='flex flex-wrap justify-between items-center w-full mb-[60px]'>
+                      <div className='flex gap-2 w-[34%]'>
+                        <div className='py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] 
+                        text-[#737373] hover:bg-[#262626] hover:text-[#ffff] 
+                         duration-300 ease-in-out'>
+                          <MdWindow />
+                        </div>
+                        <div className='py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] 
+                        text-[#737373] hover:bg-[#262626] hover:text-[#ffff] 
+                         duration-300 ease-in-out'>
+                          <AiOutlineBars />
+                        </div>
+                      </div>
+                      <div className='w-[35%] flex items-center'>
+                        <label className='text-[#737373] me-2'>Sort by:</label>
+                       <div className='relative'>
+                        <input className='border-2 border-[#F0F0F0] py-1 text-[#737373] ps-[5px]' type="text" placeholder='number'/>
+                        <div className='absolute top-[10px] right-[5px] text-[#737373]'>
+                          <IoMdArrowDropdown />
+                        </div>
+                       </div>
+                      </div>
+                      <div className='w-[30%] flex items-center'>
+                       <label className='text-[#737373] me-2'>Show:</label>
+                        <div className='relative'>
+                        <input className='border-2 border-[#F0F0F0] py-1 text-[#737373] ps-[5px]' type="text" placeholder='number'/>
+                        <div className='absolute top-[10px] right-[5px] text-[#737373]'>
+                          <IoMdArrowDropdown />
+                        </div>
+                       </div>
+                      </div>
+                  </div>
                   <div  className='lg:flex flex-wrap justify-between md:flex sm:flex'>
-                      <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
-                                    <div className='relative group'>
-                                        <div>
-                                            <img src={spimg} alt="" />
-                                        </div>
-                                            <div className='bg-[#FFFFFF] absolute bottom-0 right-0 w-full opacity-0 group-hover:opacity-100 duration-300 ease-in-out'>
-                                                              <ul className='py-3'>
-                                                                  <li className='flex items-center justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Add to Wish List</span>
-                                                                         <div className='ms-[10px]'>
-                                                                        <FaHeart />
-                                                                    </div>
-                                                                  </li>
-                                                                <li className='flex items-center py-2 justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Compare</span>
-                                                                    <div className='ms-[10px]'>
-                                                                        <IoGitCompare />
-                                                                    </div>
-                                                                </li>     
-                                                               <li className='flex items-center justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Add to Cart</span>
-                                                               <div className='ms-[10px]'>
-                                                                         <FaShoppingCart />
-                                                                    </div>
-                                                               </li>
-                                                                    
-                                                              </ul>
-                                                        </div>
-                                                        <div className='py-2 px-6 bg-[black] text-[white] absolute top-[12px] left-[10px]'>
-                                                            <p>New</p>
-                                                        </div>
-                                    </div>
-                                    <div className='flex justify-between'>
-                                       <div className=''>
-                                        <h4 className='text-[#262626] font-dm font-bold text-[20px] mt-[12px]'>Basic Crew Neck Tee</h4>
-                                        <h6 className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>Black</h6>
-                                       </div>
-                                       <div className=''>
-                                        <p className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>$44.00</p>
-                                       </div>
-                                    </div>
-                                </div>
-                          <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
-                                    <div className='relative group'>
-                                        <div>
-                                            <img src={spimg} alt="" />
-                                        </div>
-                                            <div className='bg-[#FFFFFF] absolute bottom-0 right-0 w-full opacity-0 group-hover:opacity-100 duration-300 ease-in-out'>
-                                                              <ul className='py-3'>
-                                                                  <li className='flex items-center justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Add to Wish List</span>
-                                                                         <div className='ms-[10px]'>
-                                                                        <FaHeart />
-                                                                    </div>
-                                                                  </li>
-                                                                <li className='flex items-center py-2 justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Compare</span>
-                                                                    <div className='ms-[10px]'>
-                                                                        <IoGitCompare />
-                                                                    </div>
-                                                                </li>     
-                                                               <li className='flex items-center justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Add to Cart</span>
-                                                               <div className='ms-[10px]'>
-                                                                         <FaShoppingCart />
-                                                                    </div>
-                                                               </li>
-                                                                    
-                                                              </ul>
-                                                        </div>
-                                                        <div className='py-2 px-6 bg-[black] text-[white] absolute top-[12px] left-[10px]'>
-                                                            <p>New</p>
-                                                        </div>
-                                    </div>
-                                    <div className='flex justify-between'>
-                                       <div className=''>
-                                        <h4 className='text-[#262626] font-dm font-bold text-[20px] mt-[12px]'>Basic Crew Neck Tee</h4>
-                                        <h6 className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>Black</h6>
-                                       </div>
-                                       <div className=''>
-                                        <p className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>$44.00</p>
-                                       </div>
-                                    </div>
-                                </div>  
-                      <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
-                                    <div className='relative group'>
-                                        <div>
-                                            <img src={spimg} alt="" />
-                                        </div>
-                                            <div className='bg-[#FFFFFF] absolute bottom-0 right-0 w-full opacity-0 group-hover:opacity-100 duration-300 ease-in-out'>
-                                                              <ul className='py-3'>
-                                                                  <li className='flex items-center justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Add to Wish List</span>
-                                                                         <div className='ms-[10px]'>
-                                                                        <FaHeart />
-                                                                    </div>
-                                                                  </li>
-                                                                <li className='flex items-center py-2 justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Compare</span>
-                                                                    <div className='ms-[10px]'>
-                                                                        <IoGitCompare />
-                                                                    </div>
-                                                                </li>     
-                                                               <li className='flex items-center justify-end pr-[20px]'><span className='text-[#262626] hover:text-[#767676] duration-300 
-                                                                  ease-in-out font-dm font-normal text-[16px]'>Add to Cart</span>
-                                                               <div className='ms-[10px]'>
-                                                                         <FaShoppingCart />
-                                                                    </div>
-                                                               </li>
-                                                                    
-                                                              </ul>
-                                                        </div>
-                                                        <div className='py-2 px-6 bg-[black] text-[white] absolute top-[12px] left-[10px]'>
-                                                            <p>New</p>
-                                                        </div>
-                                    </div>
-                                    <div className='flex justify-between'>
-                                       <div className=''>
-                                        <h4 className='text-[#262626] font-dm font-bold text-[20px] mt-[12px]'>Basic Crew Neck Tee</h4>
-                                        <h6 className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>Black</h6>
-                                       </div>
-                                       <div className=''>
-                                        <p className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>$44.00</p>
-                                       </div>
-                                    </div>
-                                </div>
                      <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
                                     <div className='relative group'>
                                         <div>
