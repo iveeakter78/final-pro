@@ -31,7 +31,7 @@ function SamplePrevArrow(props) {
 }
 
 const Arrive = () => {
-    let data = useContext(ApiData);
+    let {info} = useContext(ApiData);
     // console.log(data);
     let newarrival = {
     infinite: true,
@@ -78,7 +78,7 @@ const Arrive = () => {
             <h3 className='text-[#262626] font-dm font-bold text-[39px] ms-[10px] lg:ms-0'>New Arrivals</h3>
             <div id='arrive' className='mt-[48px] mx-2 lg:mx-0'>
               <Slider {...newarrival}>
-                    {data.map((item) =>(
+                    {info.map((item) =>(
                        <div className='!w-[95%]'>
                     <div className='relative group bg-[#D8D8D8]'>
                        <a className='text-[#FFFFFF] font-dm font-bold 

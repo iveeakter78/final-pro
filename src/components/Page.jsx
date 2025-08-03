@@ -8,8 +8,7 @@ import { ApiData } from './ContextApi'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 const Page = ({allData}) => {
     // console.log(allData);
-    
-    let data = useContext(ApiData)
+    // let data = useContext(ApiData)
     // console.log(data);
     let {loading} = useContext(ApiData)
     if(loading){
@@ -25,12 +24,12 @@ const Page = ({allData}) => {
   return (
     <>
     <div className='flex flex-wrap justify-between'>
-       {allData.map(() => (
+       {allData.map((item) => (
        <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
             <Link to={"/shop/id"}>
-                  <div className='relative group'>
+                  <div className='relative group bg-[rgba(216,216,216,0.24)]'>
                                                                  <div>
-                                                                     <img src={spimg} alt="" />
+                                                                     <img src={item.thumbnail} alt="" />
                                                                  </div>
                                                                      <div className='bg-[#FFFFFF] absolute bottom-0 right-0 w-full opacity-0 group-hover:opacity-100 duration-300 ease-in-out'>
                                                                                        <ul className='py-3'>
@@ -61,11 +60,11 @@ const Page = ({allData}) => {
                                                              </div>
                                                              <div className='flex justify-between'>
                                                                 <div className=''>
-                                                                 <h4 className='text-[#262626] font-dm font-bold text-[20px] mt-[12px]'>Basic Crew Neck Tee</h4>
-                                                                 <h6 className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>Black</h6>
+                                                                 <h4 className='text-[#262626] font-dm font-bold text-[20px] mt-[12px]'>{item.title}</h4>
+                                                                 <h6 className='text-[#767676] font-dm font-normal text-[16px] mt-[15px] pb-[20px]'>{item.category}</h6>
                                                                 </div>
                                                                 <div className=''>
-                                                                 <p className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>$44.00</p>
+                                                                 <p className='text-[#767676] font-dm font-normal text-[16px] mt-[15px]'>${item.price}</p>
                                                                 </div>
                                                              </div>
             </Link>                                     

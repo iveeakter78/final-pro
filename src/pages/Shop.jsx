@@ -24,7 +24,7 @@ const Shop = () => {
   let brandRef = useRef()
   let shopRef = useRef()
 
-  let [perPage, setPerPage] = useState(6)
+  let [perPage, setPerPage] = useState(9)
   let [currentPage, setCurrentPage] = useState(1)
   let lastPage = perPage * currentPage;
   let firstPage = lastPage - perPage
@@ -32,7 +32,15 @@ const Shop = () => {
   let allData = info.slice(firstPage, lastPage)
   // console.log(allData);
   
+  let pageNumber = []
+  for(let i = 0; i < Math.ceil(info.length / perPage); i++){
+    
+     pageNumber.push(i);
+  }
 
+  let paginate = (index) =>{
+    setCurrentPage(index + 1);
+  }
 
 
 
@@ -218,7 +226,7 @@ const Shop = () => {
                        <label className='text-[#737373] me-2'>Show:</label>
                        <form className="w-full">
 
-                                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white font-dm ">
+                                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white font-dm ">
 
                                         <option>36</option>
                                         <option>38</option>
@@ -230,7 +238,12 @@ const Shop = () => {
                   </div>
                         <Page allData={allData} /> 
                   <div className='mt-[53px] flex justify-between items-center'>
-                     <Pagination />
+                     <Pagination pageNumber = {pageNumber} 
+                     paginate={paginate} 
+                     currentPage={currentPage}
+                     perPage={perPage}
+                     info={info}
+                     />
                   </div>
                 </div>
              </div>
