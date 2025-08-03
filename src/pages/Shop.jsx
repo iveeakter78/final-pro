@@ -14,7 +14,7 @@ import Pagination from '../components/Pagination'
 import { ApiData } from '../components/ContextApi'
 
 const Shop = () => {
-  let info = useContext(ApiData)
+  let {info} = useContext(ApiData)
   let [catShow, setCatShow] = useState(false)
   let [colourShow, setColourShow] = useState(false)
   let [brandShow, setBrandShow] = useState(false)
@@ -202,22 +202,30 @@ const Shop = () => {
                         </div>
                       </div>
                       <div className='w-[35%] flex items-center'>
-                        <label className='text-[#737373] me-2'>Sort by:</label>
-                       <div className='relative'>
-                        <input className='border-2 border-[#F0F0F0] py-1 text-[#737373] ps-[5px]' type="text" placeholder='number'/>
-                        <div className='absolute top-[10px] right-[5px] text-[#737373]'>
-                          <IoMdArrowDropdown />
-                        </div>
-                       </div>
+                        <label className='text-[#737373] font-dm font-normal text-[16px] me-2'>Sort by:</label>
+                         <form className="w-[70%]">
+
+                                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white font-dm">
+
+                                        <option>United States</option>
+                                        <option>Canada</option>
+                                        <option>France</option>
+                                        <option>Germany</option>
+                                    </select>
+                                </form>
                       </div>
                       <div className='w-[30%] flex items-center'>
                        <label className='text-[#737373] me-2'>Show:</label>
-                        <div className='relative'>
-                        <input className='border-2 border-[#F0F0F0] py-1 text-[#737373] ps-[5px]' type="text" placeholder='number'/>
-                        <div className='absolute top-[10px] right-[5px] text-[#737373]'>
-                          <IoMdArrowDropdown />
-                        </div>
-                       </div>
+                       <form className="w-full">
+
+                                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white font-dm ">
+
+                                        <option>36</option>
+                                        <option>38</option>
+                                        <option>40</option>
+                                        <option>42</option>
+                                    </select>
+                                </form>
                       </div>
                   </div>
                         <Page allData={allData} /> 

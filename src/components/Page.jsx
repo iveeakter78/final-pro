@@ -5,12 +5,23 @@ import spimg from "../assets/cap.png"
 import { FaShoppingCart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { ApiData } from './ContextApi'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 const Page = ({allData}) => {
     // console.log(allData);
     
     let data = useContext(ApiData)
     // console.log(data);
-    
+    let {loading} = useContext(ApiData)
+    if(loading){
+       return(
+      <>
+      <div className='text-[#767676] text-[32px] mt-[50px] ms-[40%]'>
+        <AiOutlineLoading3Quarters />
+      </div>
+      </>
+    )}
+
+
   return (
     <>
     <div className='flex flex-wrap justify-between'>
