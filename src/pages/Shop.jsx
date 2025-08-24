@@ -5,7 +5,7 @@ import { TiArrowSortedDown } from 'react-icons/ti'
 import { MdWindow } from 'react-icons/md'
 import { AiOutlineBars } from 'react-icons/ai'
 import { IoMdArrowDropdown } from 'react-icons/io'
-import { FaHeart } from 'react-icons/fa6'
+import { FaHeart, FaPlus } from 'react-icons/fa6'
 import { IoGitCompare } from 'react-icons/io5'
 import spimg from "../assets/cap.png"
 import { FaShoppingCart } from 'react-icons/fa'
@@ -23,6 +23,10 @@ const Shop = () => {
   let colorRef = useRef()
   let brandRef = useRef()
   let shopRef = useRef()
+
+  let [category, setCategory] = useState([])
+
+
 
   let [perPage, setPerPage] = useState(9)
   let [currentPage, setCurrentPage] = useState(1)
@@ -42,7 +46,30 @@ const Shop = () => {
     setCurrentPage(index + 1);
   }
 
+   
+  let next = () =>{
+    // console.log("amii");
+    if(currentPage < pageNumber.length){
+       setCurrentPage((state)=> state + 1)
+    }
+  }
 
+
+
+  let prev = () =>{
+    
+    if(currentPage > 1){
+       setCurrentPage((state)=> state - 1)
+    }
+    
+  }
+
+  useEffect(()=>{
+    setCategory([...new Set(info.map((item)=> item.category))])
+  },[info])
+  
+   console.log(category);
+   
 
    useEffect(() =>{
      document.addEventListener("click",(e) =>{
@@ -243,6 +270,8 @@ const Shop = () => {
                      currentPage={currentPage}
                      perPage={perPage}
                      info={info}
+                     next={next}
+                     prev={prev}
                      />
                   </div>
                 </div>
