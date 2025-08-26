@@ -30,6 +30,7 @@ const Shop = () => {
 
   let [perPage, setPerPage] = useState(9)
   let [currentPage, setCurrentPage] = useState(1)
+  let [cateFilter, setCateFilter] = useState([])
   let lastPage = perPage * currentPage;
   let firstPage = lastPage - perPage
   //  console.log(firstPage);
@@ -68,8 +69,20 @@ const Shop = () => {
     setCategory([...new Set(info.map((item)=> item.category))])
   },[info])
   
-   console.log(category);
+  //  console.log(category);
    
+
+
+  let handleCategory =(citem)=>{
+   let cateFilter = info.filter((item) =>item.category == citem)
+    setCateFilter(cateFilter)
+  }
+  console.log(cateFilter);
+  
+  
+  
+
+
 
    useEffect(() =>{
      document.addEventListener("click",(e) =>{
@@ -109,37 +122,13 @@ const Shop = () => {
                   <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case' ref={catRef}>Shop by Category</h4>
                  {catShow &&
                    <ul className='mt-[35px]'>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'>
-                      <span className='flex justify-between'>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Category 1</p>
-                        <div className='text-[#767676]'>
-                          <FaPlus />
-                        </div>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className='flex justify-between'>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Category 2</p>
-                        <div className='text-[#767676]'>
-                          <FaPlus />
-                        </div>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className='flex justify-between'>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Category 3</p>
-                        <div className='text-[#767676]'>
-                          <FaPlus />
-                        </div>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className='flex justify-between'>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Category 4</p>
-                        <div className='text-[#767676]'>
-                          <FaPlus />
-                        </div>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className='flex justify-between'>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Category 5</p>
-                        <div className='text-[#767676]'>
-                          <FaPlus />
-                        </div>
-                      </span></li>
+                   {category.map((item) =>(
+                    
+                            <li onClick={() =>handleCategory(item)} className='border-b-2 border-b-[#F0F0F0] py-2'>
+                              <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>{item}</p>
+                          </li>
+                   ))}
+             
                   </ul>
                  }
                  <div className='flex justify-between items-center' ref={colorRef}>
@@ -263,7 +252,7 @@ const Shop = () => {
                                 </form>
                       </div>
                   </div>
-                        <Page allData={allData} /> 
+                        <Page allData={allData} cateFilter={cateFilter} /> 
                   <div className='mt-[53px] flex justify-between items-center'>
                      <Pagination pageNumber = {pageNumber} 
                      paginate={paginate} 
