@@ -21,8 +21,16 @@ const Page = ({allData, cateFilter}) => {
      setCateMain(cateAll)
    }, [cateFilter])
     
-   console.log(cateMain);
+  //  console.log(cateMain);
    
+  let handleShow = () =>{
+    setCateMain(cateFilter)
+    setShowAll(false)
+  }
+  let handleLess = ()=>{
+    setCateMain(cateFilter.slice(0, 5))
+    setShowAll(true)
+  }
 
 
 
@@ -46,8 +54,9 @@ const Page = ({allData, cateFilter}) => {
     <>
     <div className='flex flex-wrap justify-between'>
       {cateFilter.length > 0 ?(
-          <div className=''>
-       {cateMain.map((item) => (
+          <div>
+          <div className="flex flex-wrap justify-between">
+                       {cateMain.map((item) => (
        <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
             <Link to={`/products/${item.id}`}>
                   <div className='relative group bg-[rgba(216,216,216,0.24)]'>
@@ -93,14 +102,19 @@ const Page = ({allData, cateFilter}) => {
             </Link>                                     
         </div>
     ))}
+        </div>
+        {showAll ? cateFilter.length > 5 && 
+         <div className='' onClick={handleShow}>
+           <h2>Show All</h2>
+         </div> : 
+          cateFilter.length > 5 && <div className='' onClick={handleLess}>
+            <h2>Show Less</h2>
+          </div> }
       </div>
-      // { showAll ? cateFilter.
-      //   :<h2>Show Less</h2>
-      //   }
       )
-      : (
-        <div className=''>
-        {allData.map((item) => (
+      :
+      (    <div className='flex flex-wrap justify-between'>
+           {allData.map((item) => (
        <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
             <Link to={`/products/${item.id}`}>
                   <div className='relative group bg-[rgba(216,216,216,0.24)]'>
@@ -146,8 +160,7 @@ const Page = ({allData, cateFilter}) => {
             </Link>                                     
         </div>
     ))}
-      </div>
-      )
+      </div>)
       }
     
     </div>
