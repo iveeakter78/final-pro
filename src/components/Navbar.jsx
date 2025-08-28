@@ -26,17 +26,17 @@ const Navbar = () => {
             if(cateRef.current.contains(e.target) == true){
                setCateshow(!cateshow);
             }else{
-                 setCateshow(cateshow);
+                 setCateshow(false);
             }
             if(accRef.current.contains(e.target) == true){
               setAccshow(!accshow);
             }else{
-                setAccshow(accshow);
+                setAccshow(false);
             }
             if(cartRef.current.contains(e.target) == true){
               setCartshow(!cartshow)
             }else{
-              setCartshow(cartshow)
+              setCartshow(false)
             }
         });
     },[cateshow, accshow, cartshow]);
@@ -101,7 +101,7 @@ const Navbar = () => {
                 </div>
                 <div className='w-2/8 relative'>
                 <div className={`flex justify-end lg:gap-3 gap-2`}>
-                        <div className={`flex`}ref={accRef}>
+                        <div className={`flex`} ref={accRef}>
                          <FaUser />
                             <IoMdArrowDropdown />
                         </div>

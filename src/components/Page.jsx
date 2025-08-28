@@ -6,11 +6,12 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { ApiData } from './ContextApi'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
-const Page = ({allData, cateFilter}) => {
+const Page = ({allData, cateFilter, active}) => {
     // console.log(allData);
     // let data = useContext(ApiData)
     // console.log(data);
     // console.log(cateFilter);
+    console.log(active);
     
   let [cateMain, setCateMain] = useState([])
    

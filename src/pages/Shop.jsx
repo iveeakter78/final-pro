@@ -31,6 +31,7 @@ const Shop = () => {
   let [perPage, setPerPage] = useState(9)
   let [currentPage, setCurrentPage] = useState(1)
   let [cateFilter, setCateFilter] = useState([])
+  let [active, setActive] = useState("")
   let lastPage = perPage * currentPage;
   let firstPage = lastPage - perPage
   //  console.log(firstPage);
@@ -80,8 +81,13 @@ const Shop = () => {
   console.log(cateFilter);
   
   
+  let handleList = ()=>{
+    // console.log("ami");
+    setActive("active")
+  }
+   
+  // console.log(active);
   
-
 
 
    useEffect(() =>{
@@ -221,7 +227,7 @@ const Shop = () => {
                         </div>
                         <div className='py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] 
                         text-[#737373] hover:bg-[#262626] hover:text-[#ffff] 
-                         duration-300 ease-in-out'>
+                         duration-300 ease-in-out' onClick={handleList}>
                           <AiOutlineBars />
                         </div>
                       </div>
@@ -252,7 +258,10 @@ const Shop = () => {
                                 </form>
                       </div>
                   </div>
-                        <Page allData={allData} cateFilter={cateFilter} /> 
+                        <Page allData={allData} 
+                        cateFilter={cateFilter}
+                         active={active}
+                         /> 
                   <div className='mt-[53px] flex justify-between items-center'>
                      <Pagination pageNumber = {pageNumber} 
                      paginate={paginate} 
