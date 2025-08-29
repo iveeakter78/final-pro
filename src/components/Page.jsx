@@ -53,7 +53,7 @@ const Page = ({allData, cateFilter, active}) => {
 
   return (
     <>
-    <div className='flex flex-wrap justify-between'>
+    <div className=''>
       {cateFilter.length > 0 ?(
           <div>
           <div className="flex flex-wrap justify-between">
@@ -114,7 +114,7 @@ const Page = ({allData, cateFilter, active}) => {
       </div>
       )
       :
-      (    <div className='flex flex-wrap justify-between'>
+      (    <div className={`flex flex-wrap justify-between`}>
            {allData.map((item) => (
        <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
             <Link to={`/products/${item.id}`}>

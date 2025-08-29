@@ -1,13 +1,15 @@
 import React from 'react'
 
-const Pagination = ({pageNumber, paginate, currentPage, perPage, info, next, prev}) => {
+const Pagination = ({pageNumber, paginate, currentPage, perPage, info, next, prev, cateFilter}) => {
 
   // console.log(currentPage);
-  
+    console.log(cateFilter);
+    
   return (
     <>
-       <div>
-                        <nav aria-label="Page navigation example">
+    <div className={`${cateFilter.length > 0 ? "hidden" : "flex items-center justify-between mt-[53px]"}`}>
+      <div>
+            <nav aria-label="Page navigation example">
                                     <ul class="flex items-center -space-x-px h-10 text-base">
                                                <li onClick={prev}>
                                             <a href='#'
@@ -42,10 +44,11 @@ const Pagination = ({pageNumber, paginate, currentPage, perPage, info, next, pre
                                         </li>
                                     </ul>
                                 </nav>
-                    </div>
-                    <div>
+      </div>
+            <div>
                       <p className='text-[#767676] font-dm font-normal text-[14px] capitalize'>Products from {currentPage} to {perPage} of {info.length}</p>
                     </div>
+    </div>
     </>
   )
 }

@@ -25,12 +25,14 @@ const Shop = () => {
   let shopRef = useRef()
 
   let [category, setCategory] = useState([])
-
+  let [brand, setBrand] = useState([])
 
 
   let [perPage, setPerPage] = useState(9)
   let [currentPage, setCurrentPage] = useState(1)
   let [cateFilter, setCateFilter] = useState([])
+  let [low, setLow] = useState()
+  let [high, setHigh] = useState()
   let [active, setActive] = useState("")
   let lastPage = perPage * currentPage;
   let firstPage = lastPage - perPage
@@ -68,9 +70,12 @@ const Shop = () => {
 
   useEffect(()=>{
     setCategory([...new Set(info.map((item)=> item.category))])
+    setBrand([...new Set(info.map((item)=> item.brand))])
   },[info])
   
   //  console.log(category);
+  // console.log(brand);
+  
    
 
 
@@ -78,9 +83,12 @@ const Shop = () => {
    let cateFilter = info.filter((item) =>item.category == citem)
     setCateFilter(cateFilter)
   }
-  console.log(cateFilter);
+  // console.log(cateFilter);
   
-  
+  let handleBrand=(bitem)=>{
+    let cateFilter = info.filter((item)=>item.brand == bitem)
+     setCateFilter(cateFilter)
+  }
   let handleList = ()=>{
     // console.log("ami");
     setActive("active")
@@ -88,6 +96,26 @@ const Shop = () => {
    
   // console.log(active);
   
+   let handlePrice = (value)=>{
+    setLow(value.low);
+    setHigh(value.high);
+    let priceShow = info.filter((item)=> item.price >= value.low && item.price <= value.high)
+    setCateFilter(priceShow)
+   }
+
+  // console.log(low);
+  // console.log(high);
+  
+  
+
+
+   let handleChange =(e)=>{
+    setPerPage(e.target.value);
+    
+   }
+  
+
+
 
 
    useEffect(() =>{
@@ -97,22 +125,22 @@ const Shop = () => {
          if(catRef.current.contains(e.target) == true){
             setCatShow(!catShow)
          }else{
-            setCatShow(catShow)
+            setCatShow(false)
          }
          if(colorRef.current.contains(e.target) == true){
              setColourShow(!colourShow)
          }else{
-            setColourShow(colourShow)
+            setColourShow(false)
          }
          if(brandRef.current.contains(e.target) == true){
            setBrandShow(!brandShow)
          }else{
-           setBrandShow(brandShow)
+           setBrandShow(false)
          }
          if(shopRef.current.contains(e.target) == true){
               setShopShow(!shopShow)
          }else{
-             setShopShow(shopShow)
+             setShopShow(false)
          }
      })
     
@@ -171,22 +199,12 @@ const Shop = () => {
                  </div>
                  {brandShow &&
                        <ul className='mt-[35px]'>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'>
+                        {brand.map((item)=> (
+                            <li className='border-b-2 border-b-[#F0F0F0] py-2' onClick={() =>handleBrand(item)}>
                       <span className=''>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 1</p>
+                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>{item}</p>
                       </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 2</p>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 3</p>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 4</p>
-                      </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
-                        <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>Brand 5</p>
-                      </span></li>
+                        ))}
                   </ul>
                  }
                 <div className='flex justify-between items-center pt-8' ref={shopRef}> 
@@ -197,20 +215,20 @@ const Shop = () => {
                   </div>  
                   { shopShow &&
                            <ul className='mt-[35px]'>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'>
+                    <li onClick={()=> handlePrice({low: 0, high: 9.99})} className='border-b-2 border-b-[#F0F0F0] py-2'>
                       <span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'> $0.00 - $9.99</p>
                       </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
+                    <li onClick={()=> handlePrice({low:10, high:19.99})} className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>$10.00 - $19.99</p>
                       </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
+                    <li onClick={()=> handlePrice({low:20, high:29.99})} className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>$20.00 - $29.99</p>
                       </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
+                    <li onClick={()=> handlePrice({low:30, high:39.99})} className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>$30.00 - $39.99</p>
                       </span></li>
-                    <li className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
+                    <li onClick={()=> handlePrice({low:40, high:69.99})} className='border-b-2 border-b-[#F0F0F0] py-2'><span className=''>
                         <p className='text-[#767676] font-dm normal-case font-normal text-[16px]'>$40.00 - $69.99</p>
                       </span></li>
                   </ul>
@@ -220,14 +238,13 @@ const Shop = () => {
                 <div className='w-[69%]'>
                   <div className='flex flex-wrap justify-between items-center w-full mb-[60px]'>
                       <div className='flex gap-2 w-[34%]'>
-                        <div className='py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] 
-                        text-[#737373] hover:bg-[#262626] hover:text-[#ffff] 
-                         duration-300 ease-in-out'>
+                        <div onClick={()=> setActive("")} 
+                        className={`${active == "active" ? "py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] text-[#737373] hover:bg-[#262626] hover:text-[#ffff]"
+                          :"py-1 px-1 border-1 border-[#F0F0F0] bg-[#262626] text-[#ffff]"}`}>
                           <MdWindow />
                         </div>
-                        <div className='py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] 
-                        text-[#737373] hover:bg-[#262626] hover:text-[#ffff] 
-                         duration-300 ease-in-out' onClick={handleList}>
+                        <div className={`${active == "active" ?"py-1 px-1 border-1 border-[#F0F0F0] bg-[#262626] text-[#ffff]" 
+                          : "py-1 px-1 border-1 border-[#F0F0F0] bg-[#ffff] text-[#737373] hover:bg-[#262626] hover:text-[#ffff]"}`} onClick={handleList}>
                           <AiOutlineBars />
                         </div>
                       </div>
@@ -248,12 +265,13 @@ const Shop = () => {
                        <label className='text-[#737373] me-2'>Show:</label>
                        <form className="w-full">
 
-                                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white font-dm ">
-
-                                        <option>36</option>
-                                        <option>38</option>
-                                        <option>40</option>
-                                        <option>42</option>
+                                    <select id="countries" onChange={handleChange}
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white font-dm ">
+                                    
+                                        <option>6</option>
+                                        <option>9</option>
+                                        <option>12</option>
+                                        <option>15</option>
                                     </select>
                                 </form>
                       </div>
@@ -262,7 +280,7 @@ const Shop = () => {
                         cateFilter={cateFilter}
                          active={active}
                          /> 
-                  <div className='mt-[53px] flex justify-between items-center'>
+                  <div className=''>
                      <Pagination pageNumber = {pageNumber} 
                      paginate={paginate} 
                      currentPage={currentPage}
@@ -270,6 +288,7 @@ const Shop = () => {
                      info={info}
                      next={next}
                      prev={prev}
+                     cateFilter={cateFilter}
                      />
                   </div>
                 </div>
