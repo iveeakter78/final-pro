@@ -114,11 +114,11 @@ const Page = ({allData, cateFilter, active}) => {
       </div>
       )
       :
-      (    <div className={`flex flex-wrap justify-between`}>
+      (    <div className={`${active == "active" ? "w-full" :"flex flex-wrap justify-between"}`}>
            {allData.map((item) => (
-       <div className='lg:w-[32%] md:w-[32%] sm:w-[49%] w-full '>
+       <div className={`${active == "active" ?"lg:w-[50%] md:w-[50%] sm:w-[50%] w-full" :"lg:w-[32%] md:w-[32%] sm:w-[49%] w-full"}`}>
             <Link to={`/products/${item.id}`}>
-                  <div className='relative group bg-[rgba(216,216,216,0.24)]'>
+                  <div className='relative group bg-[rgba(216,216,216,0.24) items-center]'>
                                                                  <div>
                                                                      <img src={item.thumbnail} alt="" />
                                                                  </div>
