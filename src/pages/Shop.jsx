@@ -70,7 +70,7 @@ const Shop = () => {
 
   useEffect(()=>{
     setCategory([...new Set(info.map((item)=> item.category))])
-    setBrand([...new Set(info.map((item)=> item.brand))])
+    setBrand([...new Set(info.slice(0, 14).map((item)=> item.brand))])
   },[info])
   
   //  console.log(category);
