@@ -26,18 +26,14 @@ const ProductDetail = () => {
     <div className='mb-[235px]'>
       <Container>
             <div className='w-full mt-[45px] flex flex-wrap justify-between gap-y-5'>
-            <div className=' w-[48%]'>
-        <img className='w-full' src={product} alt="" />
-      </div>
-            <div className=' w-[48%]'>
-        <img className='w-full' src={product} alt="" />
-      </div>
-            <div className=' w-[48%]'>
-        <img className='w-full' src={product} alt="" />
-      </div>
-            <div className=' w-[48%]'>
-        <img className='w-full' src={product} alt="" />
-      </div>
+              <img className=' w-[48%]' src={singleData.thumbnail} alt="" />
+              {
+                singleData.images.map((img)=>(
+                     <img className='w-[48%]' src={img} alt="" />
+                ))
+              }
+
+        {/* <img className='w-[48%]' src={product} alt="" /> */}
       </div>
       <div className='mt-[66px] w-[63%]'>
        <div className='flex gap-x-4 items-center'>
