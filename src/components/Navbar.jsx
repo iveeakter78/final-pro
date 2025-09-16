@@ -7,6 +7,7 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import { useRef } from 'react'
 import image from "../assets/cart.png"
 import { RxCross2 } from 'react-icons/rx'
+import { Link, Links } from 'react-router-dom'
 
 const Navbar = () => {
     let [cateshow, setCateshow] = useState(false)
@@ -117,9 +118,11 @@ const Navbar = () => {
                              </ul>
                           </div>
                         }
-                        <div className='' ref={cartRef}>
+                       <Link to={"/cart"}>
+                          <div className='' ref={cartRef}>
                            <FaShoppingCart />
                         </div>
+                       </Link>
                 </div>
                 {cartshow &&
                      <div className='bg-[#FFFFFF] absolute z-10 top-[40px] lg:left-0 right-[0px] lg:w-full w-[250px]'>
@@ -137,9 +140,11 @@ const Navbar = () => {
                        </div>
                        <h4 className='font-dm font-bold text-[16px] text-[#262626] ps-2 mt-[14px]'><span className='font-dm font-normal text-[16px] text-[#767676]'>Subtotal:</span> $44.00</h4>
                        <div className='mt-[13px] flex justify-around'>
+                         <Link to="/cart">
                          <div className='font-dm text-[#FFFFFF] font-bold 
                                 text-[14px] bg-[#2B2B2B]
                                 hover:text-[#262626] hover:bg-[#FFFFFF] hover:border-2 hover:border-b-[#262626] duration-300 ease-in-out text-center px-6 py-2'>View Cart</div>
+                         </Link>
                          <div className='font-dm text-[#FFFFFF] font-bold 
                                 text-[14px] bg-[#2B2B2B]
                                 hover:text-[#262626] hover:bg-[#FFFFFF] hover:border-2 hover:border-b-[#262626] duration-300 ease-in-out text-center px-6 py-2'>Checkout</div>        

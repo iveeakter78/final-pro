@@ -8,6 +8,7 @@ import Shop from "./pages/Shop"
 import Journal from "./pages/Journal"
 import Contact from "./pages/Contact"
 import ProductDetail from "./pages/ProductDetail"
+import Cart from "./pages/Cart"
 
 function App() {
    let router = createBrowserRouter(createRoutesFromChildren(
@@ -19,8 +20,9 @@ function App() {
     <Route path="/products/:id" element={<ProductDetail />}></Route>
     <Route path="/journal" element={<Journal />}></Route>
     <Route path="/contact" element={<Contact />}></Route>
+     <Route path="/cart" element={<Cart />}></Route>
+    <Route path="*" element={<Error />}></Route>
    </Route>
-     <Route path="*" element={<Error />}></Route>
    </Route>
    ))
   return (
