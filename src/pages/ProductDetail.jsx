@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import product from "../assets/glass.png"
 import Container from '../components/Container';
-import { FaStar } from 'react-icons/fa';
+import { FaPlus, FaStar } from 'react-icons/fa';
 
 const ProductDetail = () => {
   let [singleData, setSingleData] = useState({})
@@ -23,7 +23,7 @@ const ProductDetail = () => {
    
   return (
     <>
-    <div>
+    <div className='mb-[235px]'>
       <Container>
             <div className='w-full mt-[45px] flex flex-wrap justify-between gap-y-5'>
             <div className=' w-[48%]'>
@@ -48,7 +48,7 @@ const ProductDetail = () => {
                <FaStar />
                 <FaStar />
          </div>
-         <p className='font-dm text-secondery font-normal text-[14px]'>1 Review</p>
+         <p className='font-dm text-[#767676] font-normal text-[14px]'>1 Review</p>
        </div>
        <div className='flex items-center mt-[21px]'>
         <p className='text-[#D8D8D8] font-dm'><del>$88.00</del></p>
@@ -106,6 +106,65 @@ const ProductDetail = () => {
         </div>
           <hr className='text-[#E6E3E3] mt-[24px]'></hr>
       </div>
+      <div className='mt-[29px] w-[63%]'>
+        <div className='flex justify-between'>
+          <p className='font-dm font-bold text-[16px] text-primary'>FEATURES  & DETAILS</p>
+           <div className='text-[14px] text-primary'>
+             <FaPlus />
+           </div>
+        </div>
+         <hr className='text-[#E6E3E3] mt-[24px]'></hr>
+      </div>
+       <div className='mt-[29px] w-[63%]'>
+        <div className='flex justify-between'>
+          <p className='font-dm font-bold text-[16px] text-primary'>SHIPPING & RETURNS</p>
+           <div className='text-[14px] text-primary'>
+             <FaPlus />
+           </div>
+        </div>
+         <hr className='text-[#E6E3E3] mt-[24px]'></hr>
+      </div>
+       <div className='mt-[29px] w-[63%]'>
+        <p className='font-dm text-[16px] text-[#767676]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      {/* second part */}
+       <div className='mt-[145px] flex items-center gap-x-10'>
+        <h3 className='font-dm font-bold text-[20px] text-[#767676]'>Description</h3>
+        <h3 className='font-dm font-bold text-[20px] text-primary'>Reviews (1)</h3>
+       </div>
+       <p className='mt-[42px] font-dm text-[#767676] text-14px'>1 review for Product</p>
+       <hr className='mt-[16px] w-full text-[#E6E3E3]'></hr>
+       <div className='mt-[23px]'>
+         <div className='flex items-center gap-x-6'>
+          <h4 className='font-dm text-[16px] text-primary'>John Ford</h4>
+          <div className='text-[#FFD881] flex gap-x-1 items-center'>
+             <FaStar />
+             <FaStar />
+             <FaStar />
+             <FaStar />
+             <FaStar />
+          </div>
+         </div>
+         <p className='mt-[14px] font-dm text-[14px] text-[#767676]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+         <hr className='mt-[16px] w-full text-[#E6E3E3]'></hr>
+       </div>
+       {/* third part */}
+       <div className='mt-[53px] w-[60%]'>
+         <h3>Add a Review</h3>
+         <form className='mt-[48px]' action="">
+          <label className='capitalize font-dm font-bold text-[16px] text-primary'>Name</label>
+            <input className='w-full border-b-1 py-2 capitalize text-[#767676] border-b-[#E6E3E3]' placeholder="Your name here" type="text" />
+           <div className='py-4'>
+               <label className='capitalize font-dm font-bold text-[16px] text-primary'>Email</label>
+            <input className='w-full border-b-1 py-2 capitalize text-[#767676] border-b-[#E6E3E3]' placeholder="Your email here" type="text" />
+           </div>
+             <label className='capitalize font-dm font-bold text-[16px] text-primary'>Review</label>
+            <textarea className='w-full border-b-1 py-2 capitalize text-[#767676] border-b-[#E6E3E3]' placeholder="Your review here" type="text" />
+              <button className='mt-[29px] px-16 py-3 text-[#ffff] capitalize 
+              font-dm text-[14px] bg-[#262626]'>Post</button>
+             
+         </form>
+       </div>
       </Container>
    
     </div>
