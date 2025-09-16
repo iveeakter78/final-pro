@@ -28,7 +28,7 @@ const ProductDetail = () => {
             <div className='w-full mt-[45px] flex flex-wrap justify-between gap-y-5'>
               <img className=' w-[48%]' src={singleData.thumbnail} alt="" />
               {
-                singleData.images.map((img)=>(
+                singleData.images?.map((img)=>(
                      <img className='w-[48%]' src={img} alt="" />
                 ))
               }
