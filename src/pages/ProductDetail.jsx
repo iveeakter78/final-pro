@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import product from "../assets/glass.png"
 import Container from '../components/Container';
 import { FaPlus, FaStar } from 'react-icons/fa';
+import ProductRating from '../components/ProductRating';
 
 const ProductDetail = () => {
   let [singleData, setSingleData] = useState({})
@@ -26,7 +27,6 @@ const ProductDetail = () => {
     <div className='mb-[235px]'>
       <Container>
             <div className='w-full mt-[45px] flex flex-wrap justify-between gap-y-5'>
-              <img className=' w-[48%]' src={singleData.thumbnail} alt="" />
               {
                 singleData?.images?.map((img)=>(
                      <img className='w-[48%]' src={img} alt="" />
@@ -37,18 +37,25 @@ const ProductDetail = () => {
       </div>
       <div className='mt-[66px] w-[63%]'>
        <div className='flex gap-x-4 items-center'>
-         <div className='text-[#FFD881] flex gap-x-1'>
-            <FaStar />
+         <div className='flex gap-x-1'>
+            {/* <FaStar />
              <FaStar />
               <FaStar />
                <FaStar />
-                <FaStar />
+                <FaStar /> */}
+                <ProductRating rating={singleData.rating}/>
          </div>
-         <p className='font-dm text-[#767676] font-normal text-[14px]'>1 Review</p>
+         <div className='flex space-x-5'>
+            <p className='font-dm text-[#767676] font-normal text-[14px]'>Rating({
+              singleData.rating})</p>
+            <p className='font-dm text-[#767676] font-normal text-[14px]'>
+              {singleData?.reviews?.length} Review</p>
+         </div>
+         
        </div>
        <div className='flex items-center mt-[21px]'>
         <p className='text-[#D8D8D8] font-dm'><del>$88.00</del></p>
-        <p className='ps-[22px] text-primary font-dm text-[20px] font-bold'>$44.00</p>
+        <p className='ps-[22px] text-primary font-dm text-[20px] font-bold'>${singleData?.price}</p>
        </div>
         <hr className='text-[#E6E3E3] mt-[24px]'></hr>
       </div>
@@ -87,7 +94,7 @@ const ProductDetail = () => {
       <div className='mt-[24px] w-[63%]'>
         <div className='flex items-center gap-x-4'>
             <p className='font-dm font-bold text-primary'>STATUS:</p>
-         <p className='font-dm font-normal text-[#D8D8D8]'>In stock</p>
+         <p className='font-dm font-normal text-[#D8D8D8]'>{singleData?.availabilityStatus}</p>
         </div>
       <hr className='text-[#E6E3E3] mt-[24px]'></hr>
       </div>
