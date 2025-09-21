@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import product from "../assets/glass.png"
 import Container from '../components/Container';
 import { FaPlus, FaStar } from 'react-icons/fa';
@@ -107,10 +107,12 @@ const ProductDetail = () => {
                <button className='py-2 px-5 border-2 
         border-bg-primary text-primary font-dm font-bold bg-[#ffff]
         text-[14px] hover:text-[#ffff] hover:bg-[#262626]'>Add to Wish List</button>
+         <Link to={"/cart"}>
          <button onClick={handleAdd}
           className='py-2 px-7 border-2 
         border-bg-primary text-primary font-dm font-bold bg-[#ffff]
         text-[14px] hover:text-[#ffff] hover:bg-[#262626] cursor-pointer'>Add to Cart</button>
+         </Link>
         </div>
           <hr className='text-[#E6E3E3] mt-[24px]'></hr>
       </div>

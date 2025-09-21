@@ -4,12 +4,23 @@ import { FaLessThan } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import { RxCross2 } from 'react-icons/rx'
 import productimg from "../assets/glass.png"
+import { useSelector } from 'react-redux'
 
 const Cart = () => {
+    const data = useSelector(state =>state.cartDetails.cartItems)
+    // console.log(data);
+    const singleItems = data.map((item)=> item.title)
+     console.log(singleItems);
+     
   return (
     <div>
         <Container>
             <h2 className='mt-[124px] font-dm font-bold text-[49px] capitalize'>Cart</h2>
+            {
+                data.map((item)=>
+                    <h2>item.title</h2>
+                )
+            }
             <span className='pt-[15px] flex items-center gap-x-1'>
               <Link to={"/"}><p className='text-[#6D6D60] font-dm  text-[12px] capitalize'>Home</p></Link> &gt; 
               <Link to={"/cart"}><p className='text-[#6D6D60] font-dm  text-[12px] capitalize'>Cart</p></Link>
