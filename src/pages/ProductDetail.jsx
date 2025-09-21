@@ -5,6 +5,7 @@ import product from "../assets/glass.png"
 import Container from '../components/Container';
 import { FaPlus, FaStar } from 'react-icons/fa';
 import ProductRating from '../components/ProductRating';
+import { useDispatch } from 'react-redux';
 
 const ProductDetail = () => {
   let [singleData, setSingleData] = useState({})
@@ -16,12 +17,17 @@ const ProductDetail = () => {
     setSingleData(response.data)
     })
    }
-
+ 
+   let dispatch = useDispatch()
    useEffect(() =>{
     getSingleData()
-   })
+   }, [])
    console.log(singleData);
    
+   let handleAdd = ()=>{
+    console.log("ok");
+    
+   }
   return (
     <>
     <div className='mb-[235px]'>
@@ -103,9 +109,10 @@ const ProductDetail = () => {
                <button className='py-2 px-5 border-2 
         border-bg-primary text-primary font-dm font-bold bg-[#ffff]
         text-[14px] hover:text-[#ffff] hover:bg-[#262626]'>Add to Wish List</button>
-         <button className='py-2 px-7 border-2 
+         <button onClick={handleAdd}
+          className='py-2 px-7 border-2 
         border-bg-primary text-primary font-dm font-bold bg-[#ffff]
-        text-[14px] hover:text-[#ffff] hover:bg-[#262626]'>Add to Cart</button>
+        text-[14px] hover:text-[#ffff] hover:bg-[#262626] cursor-pointer'>Add to Cart</button>
         </div>
           <hr className='text-[#E6E3E3] mt-[24px]'></hr>
       </div>
