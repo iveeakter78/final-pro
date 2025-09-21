@@ -6,6 +6,7 @@ import Container from '../components/Container';
 import { FaPlus, FaStar } from 'react-icons/fa';
 import ProductRating from '../components/ProductRating';
 import { useDispatch } from 'react-redux';
+import { cartTotal } from '../slice/CartSlice';
 
 const ProductDetail = () => {
   let [singleData, setSingleData] = useState({})
@@ -22,11 +23,10 @@ const ProductDetail = () => {
    useEffect(() =>{
     getSingleData()
    }, [])
-   console.log(singleData);
    
    let handleAdd = ()=>{
     console.log("ok");
-    
+    dispatch(cartTotal(singleData))
    }
   return (
     <>

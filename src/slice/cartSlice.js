@@ -1,4 +1,4 @@
-import { cartSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: 0,
@@ -7,17 +7,17 @@ const initialState = {
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-   cartItems: 0,
+  cartItems: [],
   },
   reducers: {
-    increment: (state) => {
-      console.log(state,"state");
-      
+    cartTotal: (state, action) => {
+      console.log(state.cartItems,"state");
+      console.log(state.payload,"action");
+      state.cartItems.push(state.payload);
     },
   },
 })
 
-// Action creators are generated for each case reducer function
-// export const { increment, decrement, incrementByAmount } = cartSlice.actions
+export const { cartTotal } = cartSlice.actions
 
 export default cartSlice.reducer
