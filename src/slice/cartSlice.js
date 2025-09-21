@@ -12,8 +12,8 @@ export const cartSlice = createSlice({
   reducers: {
     cartTotal: (state, action) => {
       console.log(state.cartItems,"state");
-      console.log(state.payload,"action");
-      state.cartItems.push(state.payload);
+      console.log(action.payload,"action");
+      state.cartItems.push(action.payload);
     },
   },
 })

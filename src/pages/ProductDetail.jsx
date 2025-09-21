@@ -38,8 +38,6 @@ const ProductDetail = () => {
                      <img className='w-[48%]' src={img} alt="" />
                 ))
               }
-
-        {/* <img className='w-[48%]' src={product} alt="" /> */}
       </div>
       <div className='mt-[66px] w-[63%]'>
        <div className='flex gap-x-4 items-center'>
