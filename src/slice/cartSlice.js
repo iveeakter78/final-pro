@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
         state.cartItems.push({...action.payload, cartQun: 1})
      }
 
-      localStorage.setItem("cartDetails", JSON.stringify(action.payload))
+      localStorage.setItem("cartDetails", JSON.stringify(state.cartItems))
     },
     
   },
