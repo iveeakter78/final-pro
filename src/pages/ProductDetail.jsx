@@ -6,7 +6,7 @@ import Container from '../components/Container';
 import { FaPlus, FaStar } from 'react-icons/fa';
 import ProductRating from '../components/ProductRating';
 import { useDispatch } from 'react-redux';
-import { cartTotal } from '../slice/CartSlice';
+import { cartTotal } from '../slice/cartSlice';
 
 const ProductDetail = () => {
   let [singleData, setSingleData] = useState({})
