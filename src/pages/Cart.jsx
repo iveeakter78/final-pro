@@ -12,15 +12,22 @@ const Cart = () => {
     const dispatch = useDispatch()
     // console.log(data, "Data");
 
-   const handleIncrement = (item) =>{
-    console.log("ok", item);
-    dispatch(cartQuantity(item))
+   const handleIncrement = (id) =>{
+    console.log( id,"id");
+    dispatch(cartQuantity({id:id , type:"increment"}))
     
    }
-   const handleDecrement =(item) =>{
-    console.log("thikahe", item);
-    dispatch(cartQuantity(item))
-   }
+   const handleDecrement =(id) =>{
+    console.log(id,"id");
+     dispatch(cartQuantity({ id: id, type: "decrement" }));
+
+
+//     if(id > 0){
+//          dispatch(cartQuantity({ id: id, type: "decrement" }));
+//     }else{
+//         dispatch(cartQuantity({id:"id"}));
+//     }
+    }
 
 
      
@@ -48,7 +55,7 @@ const Cart = () => {
             </div>
             {
                 data.length > 0 ?
-                 data?.map((item)=>(
+                 data?.map((item, index)=>(
                     <div className='w-full flex justify-between items-center py-3 px-2 border-1 border-[#F0F0F0]'>
                         <div className='w-[25%]'>
                     <div className='flex gap-x-4 items-center'>
@@ -68,9 +75,9 @@ const Cart = () => {
                 </div>
                    <div className='w-[25%]'>
         <div className='flex items-center gap-x-4 border-2 border-[#F0F0F0] w-fit px-8 py-2'>
-          <p className='cursor-pointer' onClick={()=>handleDecrement(item)}>-</p>
+          <p className='cursor-pointer' onClick={()=>handleDecrement(index)}>-</p>
           <p>{item.cartQun}</p>
-          <p className='cursor-pointer' onClick={()=>handleIncrement(item)}>+</p>
+          <p className='cursor-pointer' onClick={()=>handleIncrement(index)}>+</p>
         </div>
                 </div>
                    <div className='w-[25%]'>

@@ -153,7 +153,7 @@ const Shop = () => {
              <span className='mt-[11px] font-dm font-normal text-[#767676] flex gap-1'><Link to="/"><p>Home</p></Link>&gt;<Link to="/shop"><p>Products</p></Link></span>
              <div className='mt-[130px] flex justify-between w-full'>
                 <div className='w-[29%]'>
-                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case' ref={catRef}>Shop by Category</h4>
+                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case cursor-pointer' ref={catRef}>Shop by Category</h4>
                  {catShow &&
                    <ul className='mt-[35px]'>
                    {category.map((item) =>(
@@ -165,7 +165,7 @@ const Shop = () => {
              
                   </ul>
                  }
-                 <div className='flex justify-between items-center' ref={colorRef}>
+                 <div className='flex justify-between items-center cursor-pointer' ref={colorRef}>
                     <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case py-8'>Shop by Color</h4>
                     <div>
                       <TiArrowSortedDown />
@@ -191,7 +191,7 @@ const Shop = () => {
                       </span></li>
                   </ul>
                  }
-                 <div className='flex justify-between' ref={brandRef}>
+                 <div className='flex justify-between cursor-pointer' ref={brandRef}>
                    <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case'>Shop by Brand</h4>
                    <div>
                     <TiArrowSortedDown />
@@ -208,7 +208,7 @@ const Shop = () => {
                   </ul>
                  }
                 <div className='flex justify-between items-center pt-8' ref={shopRef}> 
-                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case'>Shop by Price</h4>
+                  <h4 className='text-[#262626] font-dm font-bold text-[20px] normal-case cursor-pointer'>Shop by Price</h4>
                    <div>
                      <TiArrowSortedDown />
                    </div>

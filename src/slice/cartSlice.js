@@ -30,7 +30,13 @@ export const cartSlice = createSlice({
       console.log(state);
       console.log(action.payload);
       
-      
+
+      if(action.payload.type == "increment"){
+        state.cartItems[action.payload.id].cartQun += 1
+      }else{
+         state.cartItems[action.payload.id].cartQun -= 1
+      }
+      localStorage.setItem("cartDetails", JSON.stringify(state.cartItems))
     }
   },
 })
