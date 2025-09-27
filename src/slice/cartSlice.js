@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
       const findIndex = state.cartItems.findIndex((item)=> item.id
     == action.payload.id)
    
-    console.log(findIndex);
+    console.log(findIndex); 
     
      if(findIndex >= 0){
         state.cartItems[findIndex].cartQun += 1
@@ -26,10 +26,15 @@ export const cartSlice = createSlice({
 
       localStorage.setItem("cartDetails", JSON.stringify(state.cartItems))
     },
-    
+    cartQuantity: (state, action) => {
+      console.log(state);
+      console.log(action.payload);
+      
+      
+    }
   },
 })
 
-export const { cartTotal } = cartSlice.actions
+export const { cartTotal ,cartQuantity } = cartSlice.actions
 
 export default cartSlice.reducer

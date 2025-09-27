@@ -4,11 +4,25 @@ import { FaLessThan } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import { RxCross2 } from 'react-icons/rx'
 import productimg from "../assets/glass.png"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { cartQuantity } from '../slice/cartSlice'
 
 const Cart = () => {
     const data = useSelector(state =>state.cartDetails.cartItems) 
-    console.log(data, "Data");
+    const dispatch = useDispatch()
+    // console.log(data, "Data");
+
+   const handleIncrement = (item) =>{
+    console.log("ok", item);
+    dispatch(cartQuantity(item))
+    
+   }
+   const handleDecrement =(item) =>{
+    console.log("thikahe", item);
+    dispatch(cartQuantity(item))
+   }
+
+
      
   return (
     <div>
@@ -54,9 +68,9 @@ const Cart = () => {
                 </div>
                    <div className='w-[25%]'>
         <div className='flex items-center gap-x-4 border-2 border-[#F0F0F0] w-fit px-8 py-2'>
-          <p>-</p>
+          <p className='cursor-pointer' onClick={()=>handleDecrement(item)}>-</p>
           <p>{item.cartQun}</p>
-          <p>+</p>
+          <p className='cursor-pointer' onClick={()=>handleIncrement(item)}>+</p>
         </div>
                 </div>
                    <div className='w-[25%]'>
