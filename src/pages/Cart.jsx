@@ -159,7 +159,7 @@ const Total = totalPrice - disscount
                      <div className='border-2  border-t-0 border-gray-400 flex items-center justify-between'>
                      <h3 className='py-2 ps-[20px] pr-[126px] border-e-2 border-gray-400 
                      font-dm font-bold text-[#262626]'>Disscount</h3>
-                    <h6 className='py-2 ps-[20px] pr-[140px] font-dm text-[#262626]'>${disscount.toFixed(3)}</h6>
+                    <h6 className='py-2 ps-[20px] pr-[140px] font-dm text-[#262626]'>${disscount}</h6>
                    </div>
                    <div className='border-2  border-t-0 border-gray-400 flex items-center justify-between'>
                      <h3 className='py-2 ps-[20px] pr-[166.9px] border-e-2 border-gray-400 
