@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
 
       if(action.payload.type == "increment"){
         state.cartItems[action.payload.id].cartQun += 1
-      }else{
+      }else if(action.payload.type == "decrement" && state.cartItems[action.payload.id].cartQun >0){
          state.cartItems[action.payload.id].cartQun -= 1
       }
       localStorage.setItem("cartDetails", JSON.stringify(state.cartItems))
