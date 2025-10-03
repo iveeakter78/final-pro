@@ -29,7 +29,7 @@ const Banner = () => {
         style={{
          width:"28px",
           color:"transparent",
-           padding: "5px 0",
+           padding: "2px 0",
           borderRight:"2px solid white",
         }}
       >
