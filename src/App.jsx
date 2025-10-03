@@ -9,6 +9,7 @@ import Journal from "./pages/Journal"
 import Contact from "./pages/Contact"
 import ProductDetail from "./pages/ProductDetail"
 import Cart from "./pages/Cart"
+import CheckOut from "./pages/CheckOut"
 
 function App() {
    let router = createBrowserRouter(createRoutesFromChildren(
@@ -22,6 +23,7 @@ function App() {
     <Route path="/contact" element={<Contact />}></Route>
      <Route path="/cart" element={<Cart />}></Route>
     <Route path="*" element={<Error />}></Route>
+    <Route path="/checkout" element={<CheckOut />}></Route>
    </Route>
    </Route>
    ))

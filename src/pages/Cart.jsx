@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 import { RxCross2 } from 'react-icons/rx'
 import productimg from "../assets/glass.png"
 import { useDispatch, useSelector } from 'react-redux'
-import { cartQuantity } from '../slice/cartSlice'
+import { cartQuantity, cartRemove } from '../slice/cartSlice'
 import { current } from '@reduxjs/toolkit'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 const Cart = () => {
     const data = useSelector(state =>state.cartDetails.cartItems) 
@@ -64,11 +65,28 @@ const Total = totalPrice - disscount
 //     }
     }
 
-
+const handleRemove = (index) =>{
+    console.log("cart", index);
+    dispatch(cartRemove({ id: index}))
+    toast("cart items removed")
+}
      
   return (
     <div>
         <Container>
+             <ToastContainer 
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+             pauseOnFocusLoss
+              draggable
+              pauseOnHover
+             theme="light"
+             transition={Bounce}
+             />
             <h2 className='mt-[124px] font-dm font-bold text-[49px] capitalize'>Cart</h2>
             <span className='pt-[15px] flex items-center gap-x-1'>
               <Link to={"/"}><p className='text-[#6D6D60] font-dm  text-[12px] capitalize'>Home</p></Link> &gt; 
@@ -94,7 +112,7 @@ const Total = totalPrice - disscount
                     <div className='w-full flex justify-between items-center py-3 px-2 border-1 border-[#F0F0F0]'>
                         <div className='w-[25%]'>
                     <div className='flex gap-x-4 items-center'>
-                        <div>
+                        <div className='cursor-pointer' onClick={() => handleRemove(index)}>
                             <RxCross2 />
                         </div>
                         <div className='w-[28%]'>
@@ -169,9 +187,11 @@ const Total = totalPrice - disscount
                 </div>
             </div>
             {/* third part */}
-            <a href=""><button className='mt-[30px] ms-[80%] bg-[#262626] text-[#FFFFFF] py-3 cursor-pointer px-8'>
+            <Link to={"/checkout"}>
+            <button className='mt-[30px] ms-[80%] bg-[#262626] cursor-pointer text-[#FFFFFF] py-3 cursor-pointer px-8'>
                 Proceed to Checkout
-            </button></a>
+            </button>
+            </Link>
         </Container>
     </div>
   )
