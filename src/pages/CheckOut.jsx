@@ -1,12 +1,82 @@
 import React from 'react'
 import Container from '../components/Container'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const CheckOut = () => {
+ const data = useLocation()
+  const price = data.state.subTotalPrice;
+  const {disscount = 0} =  data.state || {};
+  const {cartItems = []} = data.state || {};
+  {cartItems.length > 0 && cartItems.map((item, index) => (
+  <div key={index}>
+    <img src={item.thumbnail} alt=""  />
+  </div>
+  
+))}
+
+const handleClick = () =>{
+  console.log("information");
+  
+}
+
+
+
+
+
   return (
     <>
     <div>
         <Container>
+          <div className='w-full flex justify-between border-2 border-[#767676] mt-[120px]'>
+            <div className='w-[70%] border-r-2 border-r-[#767676] py-2 px-2'>
+              <div>
+            {cartItems.length > 0 ? (
+                  cartItems.map((item, index) => (
+                    <div className="w-full flex justify-between mb-2">
+                      <div className='w-[1/8]'>
+                        <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Products</h3>
+                        <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className='w-[25%]'
+                      />
+                      </div>
+                      <div className='w-[3/8] pr-[30px]'> 
+                        <div className='w-fit'>
+                          <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Product Title</h3>
+                          <p className='font-dm text-[14px] text-[#767676] ps-[15px]'>{item.title}</p>
+                        </div>
+                      </div>
+                           <div className='w-[1/8] pr-[10px]'>
+                            <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Quantity</h3>
+                            <p className='font-dm text-[14px] text-[#767676] ps-[15px]'>{item.cartQun}</p>
+                           </div>
+                       <div className='w-[3/8]'>
+                       <div className='w-fit '>
+                          <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Product Price</h3>
+                           <p className='font-dm text-[14px] text-[#767676] ps-[15px]'>${item.price}</p>
+                       </div>
+                       </div>
+                      
+                    </div>
+                  ))
+                ) : (
+                  <p>No items in cart</p>
+                )}
+</div>
+             
+            </div>
+             <div className='w-[15%] text-center py-2'>
+              <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Disscount</h3>
+               {disscount > 0 && (
+    <p className='text-red-600 font-dm text-[14px] text-center'>-${disscount.toFixed(2)}</p>
+                )}
+            </div>
+            <div className='w-[15%] text-center pr-[40px] py-2'>
+              <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Total Price</h3>
+              <p className='font-dm text-[14px] text-[#767676] text-center'>${price}</p>
+            </div>
+          </div>
             <h2 className='mt-[124px] capitalize font-dm font-bold
             text-[49px] text-[#262626]'>Checkout</h2>
             <span className='mt-[16px] font-dm capitalize 
@@ -97,6 +167,8 @@ const CheckOut = () => {
                    <input className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Notes about your order, e.g. special notes for delivery.' />
             </div>
+            <button onClick={handleClick} className='mt-[60px] bg-[#262626] text-[#ffffff] py-3 
+            px-6 font-dm font-bold text-[14px] cursor-pointer'>Proceed Succesfull</button>
         </Container>
     </div>
     </>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Container from '../components/Container'
 import { FaLessThan } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { RxCross2 } from 'react-icons/rx'
 import productimg from "../assets/glass.png"
 import { useDispatch, useSelector } from 'react-redux'
@@ -47,6 +47,7 @@ const Total = totalPrice - disscount
 
     const dispatch = useDispatch()
     // console.log(data, "Data");
+    const navigate = useNavigate()
 
    const handleIncrement = (id) =>{
     console.log( id,"id");
@@ -56,13 +57,6 @@ const Total = totalPrice - disscount
    const handleDecrement =(id) =>{
     console.log(id,"id");
      dispatch(cartQuantity({ id: id, type: "decrement" }));
-
-
-//     if(id > 0){
-//          dispatch(cartQuantity({ id: id, type: "decrement" }));
-//     }else{
-//         dispatch(cartQuantity({id:"id"}));
-//     }
     }
 
 const handleRemove = (index) =>{
@@ -70,7 +64,20 @@ const handleRemove = (index) =>{
     dispatch(cartRemove({ id: index}))
     toast("cart items removed")
 }
-     
+
+// checkout
+      const handleCheckout = () =>{
+        console.log("checkout");
+        const firstCartItem = data[0];
+           const discount = totalPrice * 0.2;
+        navigate("/checkout", {
+            state: {
+                subTotalPrice: Total,
+                cartItems: data,
+                disscount: discount,
+            }
+        })
+      }
   return (
     <div>
         <Container>
@@ -187,11 +194,9 @@ const handleRemove = (index) =>{
                 </div>
             </div>
             {/* third part */}
-            <Link to={"/checkout"}>
-            <button className='mt-[30px] ms-[80%] bg-[#262626] cursor-pointer text-[#FFFFFF] py-3 cursor-pointer px-8'>
+            <button onClick={handleCheckout} className='mt-[30px] ms-[80%] bg-[#262626] cursor-pointer text-[#FFFFFF] py-3 cursor-pointer px-8'>
                 Proceed to Checkout
             </button>
-            </Link>
         </Container>
     </div>
   )
