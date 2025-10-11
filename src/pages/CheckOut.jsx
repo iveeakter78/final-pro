@@ -5,6 +5,8 @@ import { Bounce, toast, ToastContainer } from 'react-toastify'
 
 const CheckOut = () => {
  const data = useLocation()
+ console.log(data);
+ 
   const price = data.state.subTotalPrice;
   const {disscount = 0} =  data.state || {};
   const {cartItems = []} = data.state || {};

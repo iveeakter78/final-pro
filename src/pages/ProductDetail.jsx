@@ -7,6 +7,7 @@ import { FaPlus, FaStar } from 'react-icons/fa';
 import ProductRating from '../components/ProductRating';
 import { useDispatch } from 'react-redux';
 import { cartTotal } from '../slice/cartSlice';
+import moment from 'moment';
 
 const ProductDetail = () => {
   let [singleData, setSingleData] = useState({})
@@ -160,8 +161,10 @@ const ProductDetail = () => {
          </div>
           <input type="text" className='py-2 px-3 w-[35%] border-2 border-[#262626]
            rounded text-[#767676] mt-[15px]' placeholder={item.reviewerEmail}/>
-           <div className='flex flex-col mt-[30px]'>
+           <div className='mt-[30px]'>
                 <p>{item.date}</p>
+                <p>{moment(item.date).format("dddd")}</p>
+               
          <p className='mt-[14px] font-dm text-[14px] text-[#767676]'>{item.comment}</p>
            </div>
          <hr className='mt-[16px] w-full text-[#E6E3E3]'></hr>

@@ -10,6 +10,8 @@ import Contact from "./pages/Contact"
 import ProductDetail from "./pages/ProductDetail"
 import Cart from "./pages/Cart"
 import CheckOut from "./pages/CheckOut"
+import Account from "./pages/Account"
+import LogIn from "./pages/LogIn"
 
 function App() {
    let router = createBrowserRouter(createRoutesFromChildren(
@@ -24,6 +26,8 @@ function App() {
      <Route path="/cart" element={<Cart />}></Route>
     <Route path="*" element={<Error />}></Route>
     <Route path="/checkout" element={<CheckOut />}></Route>
+    <Route path="/account" element={<Account />}></Route>
+     <Route path="/login" element={<LogIn />}></Route>
    </Route>
    </Route>
    ))
