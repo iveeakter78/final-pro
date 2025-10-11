@@ -67,7 +67,7 @@ const handleClick = () =>{
                        <div className='w-[3/8]'>
                        <div className='w-fit '>
                           <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Product Price</h3>
-                           <p className='font-dm text-[14px] text-[#767676] ps-[15px]'>${item.price}</p>
+                           <p className='font-dm text-[14px] text-[#767676] ps-[15px]'>${item.price.toFixed(3)}</p>
                        </div>
                        </div>
                       
@@ -87,7 +87,7 @@ const handleClick = () =>{
             </div>
             <div className='w-[15%] text-center pr-[40px] py-2'>
               <h3 className='font-dm font-bold text-[18px] capitalize text-[#262626]'>Total Price</h3>
-              <p className='font-dm text-[14px] text-[#767676] text-center'>${price}</p>
+              <p className='font-dm text-[14px] text-[#767676] text-center'>${price.toFixed(3)}</p>
             </div>
           </div>
             <h2 className='mt-[124px] capitalize font-dm font-bold
