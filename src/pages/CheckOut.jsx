@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../components/Container'
 import { Link, useLocation } from 'react-router-dom'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
 
 const CheckOut = () => {
  const data = useLocation()
- console.log(data);
- 
+//  console.log(data);
+  
+  const [checkoutData, setCheckoutData] = useState({
+        FirstName: "",
+        LastName:"",
+        Email: "",
+        Number:"",
+        PostCode:"",
+        TownCity:"",
+         HouseNumber:"",
+        Apartment:"",
+        CompanyName:"",
+
+  })
+
+    const handlChange = (e)=>{
+      setCheckoutData({...checkoutData, [e.target.name]:e.target.value})
+    }
+
+
+
+
   const price = data.state.subTotalPrice;
   const {disscount = 0} =  data.state || {};
   const {cartItems = []} = data.state || {};
@@ -18,7 +38,7 @@ const CheckOut = () => {
 ))}
 
 const handleClick = () =>{
-  console.log("information");
+  console.log(checkoutData);
   toast("checkout confirm successfully")
 }
 
@@ -102,49 +122,55 @@ const handleClick = () =>{
               <div className='flex justify-between'>
                 <div className='flex flex-col w-full'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">First Name *</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                    onChange={handlChange}
+                    name='FirstName'
+                    value={checkoutData.FirstName}
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='First Name' />
                 </div>
                  <div className='flex flex-col w-full ms-[10px]'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Last Name *</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                   onChange={handlChange}
+                    name='LastName'
+                    value={checkoutData.LastName}
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Last Name' />
                 </div>
               </div>
                <div className='flex flex-col w-full ms-[10px]'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Companye Name (optional)</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                    onChange={handlChange}
+                    name='CompanyName'
+                    value={checkoutData.CompanyName}
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Company Name' />
                 </div>
                  <div className='flex flex-col w-full ms-[10px]'>
-                   <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Country *</label>
-                   {/* <input className='w-full border-b-1 border-bg-[#F0F0F0] 
-                   px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Last Name' /> */}
-                   <select name="" id="Countries" className='w-full border-b-1 border-bg-[#F0F0F0] 
-                   px-2 py-2 font-dm text-[14px] capitalize text-[#767676]'>
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>France</option>
-                    <option>Germany</option>
-                   </select>
-                </div>
-                 <div className='flex flex-col w-full ms-[10px]'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Street Address *</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                   onChange={handlChange}
+                   name='HouseNumber'
+                   value={checkoutData.HouseNumber}
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='House number and street name' />
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                   onChange={handlChange}
+                   name='Apartment'
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Apartment, suite, unit etc. (optional)' />
-                </div>
-                 <div className='flex flex-col w-full ms-[10px]'>
-                   <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Last Name *</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
-                   px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Last Name' />
                 </div>
                   <div className='flex flex-col w-full ms-[10px]'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Town/City *</label>
                    {/* <input className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Last Name' /> */}
-                   <select name="" id="Town/City" className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <select
+                    onChange={handlChange} 
+                   name="TownCity" 
+                   value={checkoutData.TownCity}
+                   id="Town/City" className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]'>
                     <option>New York</option>
                     <option>Ottowa</option>
@@ -156,7 +182,11 @@ const handleClick = () =>{
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Post Code *</label>
                    {/* <input className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Last Name' /> */}
-                   <select name="" id="Post Code *" className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <select 
+                   onChange={handlChange}
+                   name="PostCode" 
+                   value={checkoutData.PostCode}
+                   id="Post Code *" className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]'>
                     <option>1100</option>
                     <option>1112</option>
@@ -167,12 +197,20 @@ const handleClick = () =>{
 
                   <div className='flex flex-col w-full ms-[10px]'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Phone *</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                   onChange={handlChange}
+                   name='Number'
+                   value={checkoutData.Number}
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="number" placeholder='Phone' />
                 </div>
                   <div className='flex flex-col w-full ms-[10px]'>
                    <label className='my-4 text-[#262626] font-dm font-bold capitalize' htmlFor="">Email Address *</label>
-                   <input className='w-full border-b-1 border-bg-[#F0F0F0] 
+                   <input 
+                     onChange={handlChange}
+                     name='Email'
+                     value={checkoutData.Email}
+                   className='w-full border-b-1 border-bg-[#F0F0F0] 
                    px-2 py-2 font-dm text-[14px] capitalize text-[#767676]' type="text" placeholder='Email' />
                 </div>
             </div>

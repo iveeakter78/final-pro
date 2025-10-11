@@ -1,12 +1,13 @@
 import React from 'react'
 import Container from '../components/Container'
+import { Link } from 'react-router-dom'
 
 const LogIn = () => {
   return (
    <>
    <Container>
-    <h2 className='font-dm font-bold text-[#262626] text-[49px] capitalize mb-[11px]'>Login</h2>
-    <span className='font-dm text-[12px] text-[#6D6D60] capitalize'>Home  &gt; Login</span>
+    <h2 className='font-dm font-bold text-[#262626] text-[49px] capitalize mb-[11px] mt-[124px]'>Login</h2>
+    <span className='font-dm text-[12px] text-[#6D6D60] capitalize'><Link to={"/"}>Home</Link>  &gt; <Link to={"/login"}>Login</Link></span>
     {/* second */}
     <p className='mt-[127px] w-[50%] text-[#767676]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
    <hr className='mt-[47px] w-[50%] text-[#767676]'></hr>

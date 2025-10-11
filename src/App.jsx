@@ -12,6 +12,7 @@ import Cart from "./pages/Cart"
 import CheckOut from "./pages/CheckOut"
 import Account from "./pages/Account"
 import LogIn from "./pages/LogIn"
+import SignUp from "./pages/SignUp"
 
 function App() {
    let router = createBrowserRouter(createRoutesFromChildren(
@@ -28,6 +29,7 @@ function App() {
     <Route path="/checkout" element={<CheckOut />}></Route>
     <Route path="/account" element={<Account />}></Route>
      <Route path="/login" element={<LogIn />}></Route>
+      <Route path="/signup" element={<SignUp />}></Route>
    </Route>
    </Route>
    ))
