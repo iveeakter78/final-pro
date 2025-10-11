@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
 import { FaLessThan } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
@@ -23,6 +23,17 @@ const Cart = () => {
 
     const [cupponName, setCupponName] = useState("")
     const [disscount, setDissCount] = useState("")
+    // useEffect(() =>{
+    // if(cupponName == "fdr2413"){
+    //     console.log("20%");
+    //     setDissCount(totalPrice*.2);
+        
+        
+    // }else{
+    //     console.log("no disscount");
+        
+    // }
+    // }, [disscount])
 
     const handleChange = (e)=>{
         setCupponName(e.target.value);
@@ -194,7 +205,7 @@ const handleRemove = (index) =>{
                 </div>
             </div>
             {/* third part */}
-            <button onClick={handleCheckout} className='mt-[30px] ms-[80%] bg-[#262626] cursor-pointer text-[#FFFFFF] py-3 cursor-pointer px-8'>
+            <button onClick={handleCheckout} className='mt-[30px] ms-[80%] bg-[#262626] cursor-pointer text-[#FFFFFF] py-3 px-8'>
                 Proceed to Checkout
             </button>
         </Container>

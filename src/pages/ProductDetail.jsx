@@ -145,8 +145,11 @@ const ProductDetail = () => {
        <p className='mt-[42px] font-dm text-[#767676] text-14px'>1 review for Product</p>
        <hr className='mt-[16px] w-full text-[#E6E3E3]'></hr>
        <div className='mt-[23px]'>
-         <div className='flex items-center gap-x-6'>
-          <h4 className='font-dm text-[16px] text-primary'>John Ford</h4>
+          {
+            singleData?.reviews?.map((item)=>(
+              <div className='mb-4'>
+                         <div className='flex items-center gap-x-6'>
+          <h4 className='font-dm text-[16px] text-primary'>{item.reviewerName}</h4>
           <div className='text-[#FFD881] flex gap-x-1 items-center'>
              <FaStar />
              <FaStar />
@@ -155,8 +158,28 @@ const ProductDetail = () => {
              <FaStar />
           </div>
          </div>
-         <p className='mt-[14px] font-dm text-[14px] text-[#767676]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+          <input type="text" className='py-2 px-3 w-[35%] border-2 border-[#262626]
+           rounded text-[#767676] mt-[15px]' placeholder={item.reviewerEmail}/>
+           <div className='flex flex-col mt-[30px]'>
+                <p>{item.date}</p>
+         <p className='mt-[14px] font-dm text-[14px] text-[#767676]'>{item.comment}</p>
+           </div>
          <hr className='mt-[16px] w-full text-[#E6E3E3]'></hr>
+              </div>
+       
+            ))
+          }
+         {/* <div className='flex items-center gap-x-6'>
+          <h4 className='font-dm text-[16px] text-primary'>John Ford</h4>
+          <div className='text-[#FFD881] flex gap-x-1 items-center'>
+             <FaStar />
+             <FaStar />
+             <FaStar />
+             <FaStar />
+             <FaStar />
+          </div>
+         </div> */}
+         
        </div>
        {/* third part */}
        <div className='mt-[53px] w-[60%]'>

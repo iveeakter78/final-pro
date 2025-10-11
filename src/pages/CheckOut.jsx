@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../components/Container'
 import { Link, useLocation } from 'react-router-dom'
+import { Bounce, toast, ToastContainer } from 'react-toastify'
 
 const CheckOut = () => {
  const data = useLocation()
@@ -16,7 +17,7 @@ const CheckOut = () => {
 
 const handleClick = () =>{
   console.log("information");
-  
+  toast("checkout confirm successfully")
 }
 
 
@@ -27,6 +28,18 @@ const handleClick = () =>{
     <>
     <div>
         <Container>
+           <ToastContainer 
+           position="top-center"
+           autoClose={5000}
+           hideProgressBar={false}
+          newestOnTop={false}
+         closeOnClick={false}
+            rtl={false}
+           pauseOnFocusLoss
+          draggable
+         pauseOnHover
+         theme="dark"
+        transition={Bounce}/>
           <div className='w-full flex justify-between border-2 border-[#767676] mt-[120px]'>
             <div className='w-[70%] border-r-2 border-r-[#767676] py-2 px-2'>
               <div>
