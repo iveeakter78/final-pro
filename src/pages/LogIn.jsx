@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 import { FaEye } from 'react-icons/fa'
 import { IoIosEye, IoIosEyeOff } from 'react-icons/io'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
+// import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const LogIn = () => {
-  
   const [show, setShow] = useState(false)
   const [checkInform, setCheckInform] = useState({
     password: "",
@@ -21,10 +23,43 @@ const LogIn = () => {
     setCheckInform({...checkInform, [e.target.name]:e.target.value});
     
   }
+  
+  const handleGoogleSignIn = () =>{
+    const auth = getAuth()
+     const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+  .then((result) => {
+     console.log(result);
+     
+    toast.success(result)
+     
+  })
+  .catch((error) => {
+      toast.error(error);
+  });
+    
+  }
+
+
 
  const handleLog = () =>{
-  console.log(checkInform);
-  toast("LogIn successfully")
+  // console.log(checkInform);
+    const auth = getAuth()
+    const provider = new GoogleAuthProvider();
+   const email = checkInform.email;
+   const password = checkInform.password
+
+   signInWithEmailAndPassword(auth, email, password)
+  .then((user) => {
+    console.log(user);
+    toast.success("LogIn successfully")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    toast.error(errorCode);
+    
+  });
  }
   return (
    <>
@@ -45,6 +80,11 @@ transition={Bounce}
     <h2 className='font-dm font-bold text-[#262626] text-[49px] capitalize mb-[11px] mt-[124px]'>Login</h2>
     <span className='font-dm text-[12px] text-[#6D6D60] capitalize'><Link to={"/"}>Home</Link>  &gt; <Link to={"/login"}>Login</Link></span>
     {/* second */}
+    <div className='w-[45%]'
+    onClick={handleGoogleSignIn}
+    >
+      <p className='mt-[20px] bg-teal-500 py-2 text-white ps-2'>Google Sign In</p>
+    </div>
     <p className='mt-[127px] w-[50%] text-[#767676]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
    <hr className='mt-[47px] w-[50%] text-[#767676]'></hr>
     <div className='mt-[58px] w-[50%]'>
@@ -84,7 +124,7 @@ transition={Bounce}
        onClick={handleLog}
       className='font-dm font-bold text-[#262626] hover:text-[#ffff] mt-[50px] 
       text-[14px] bg-[#ffff] hover:bg-[#262626] py-3 px-8 
-      border-2 border-[#262626] cursor-pointer'>Log in</button>
+      border-2 border-[#262626] cursor-pointer'>Submit</button>
     </div>
    </Container>
    </>

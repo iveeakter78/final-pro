@@ -18,6 +18,8 @@ const SignUp = () => {
       repet: "",
       email: ""
    })
+
+   const [error, setError] = useState("")
     
    const handleClick = () =>{
       setShow(!show)
@@ -43,11 +45,10 @@ const SignUp = () => {
   })
   .catch((error) => {
     const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-    console.log(errorCode);
-    console.log(errorMessage);
-    toast.error(errorCode)
+    if(errorCode.includes("auth/email-already-in-use")){
+      setError("This Email is already used")
+      // toast.error(error)
+    }
     
   });
 
@@ -73,6 +74,9 @@ transition={Bounce}
     <h2 className='font-dm font-bold text-[#262626] text-[49px] capitalize mb-[11px] mt-[124px]'>Sign up</h2>
     <span className='font-dm text-[12px] text-[#6D6D60] capitalize'><Link to={"/"}>Home</Link>  &gt; <Link to={"/signup"}></Link>SignUp</span>
     {/* second */}
+    {error &&
+     <p className='mt-[30px] py-2 px-2 bg-red-500 text-white w-[45%]'>{error}</p>
+     }
     <p className='mt-[127px] w-[50%] text-[#767676]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
    <hr className='mt-[47px] w-[50%] text-[#767676]'></hr>
     <div className='mt-[58px] w-[50%]'>
@@ -154,7 +158,7 @@ transition={Bounce}
       onClick={handleSign}
       className='font-dm font-bold text-[#262626] hover:text-[#ffff] mt-[50px] 
       text-[14px] bg-[#ffff] hover:bg-[#262626] py-3 px-8 
-      border-2 border-[#262626] cursor-pointer'>Log in</button>
+      border-2 border-[#262626] cursor-pointer'>SignUp</button>
     </div>
    </Container>
    </>
